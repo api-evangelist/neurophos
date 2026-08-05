@@ -1,0 +1,37 @@
+generated: '2026-08-04'
+method: derived
+source: mcp/neurophos-mcp-tools-list.json
+note: >-
+  Neurophos publishes no OpenAPI and no developer authentication documentation, so there
+  are no securitySchemes to derive from. The only authenticated surface reachable at the
+  neurophos.com host is the Wix-provided site MCP endpoint, whose auth model is derived
+  here from its live tools/list response.
+summary:
+  types:
+  - none
+  - bearer-token
+  api_key_in: []
+  oauth2_flows: []
+schemes:
+- name: anonymous-mcp-connect
+  type: none
+  description: >-
+    The MCP endpoint https://www.neurophos.com/_api/mcp accepts an unauthenticated
+    JSON-RPC tools/list and answers 200. No credential is required to connect or to
+    enumerate tools.
+  sources:
+  - mcp/neurophos-mcp-tools-list.json
+- name: visitor-token
+  type: http
+  scheme: bearer
+  description: >-
+    Tools that act on a visitor's behalf (CallWixSiteAPI, ExecuteWixAPI) require a
+    visitorToken parameter. The token is minted anonymously by the GenerateVisitorToken
+    tool — there is no signup, no API key issuance, and no OAuth authorization step.
+    Scope is limited to public site data and visitor-session actions.
+  obtained_via: GenerateVisitorToken (MCP tool)
+  sources:
+  - mcp/neurophos-mcp-tools-list.json
+oauth:
+  present: false
+  evidence: /.well-known/oauth-authorization-server returned 400 (site) and 404 (MCP path)

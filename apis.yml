@@ -1,18 +1,61 @@
 aid: neurophos
 name: Neurophos
-description: 'Neurophos is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  Neurophos is an Austin, Texas semiconductor company, spun out of Duke University in
+  2020, building photonic AI inference silicon. Its Optical Processing Unit (OPU)
+  integrates over a million micron-scale dynamic optical metasurface modulators —
+  technology descended from metamaterials research — onto a single chip, performing the
+  matrix multiplications behind AI inference in light rather than electrons. The company
+  markets the T100 OPU as a drop-in data-center alternative to GPUs, publishing chip and
+  server configurations rated at 235 TOPS/W with HBM-backed memory, and lists Triton and
+  JAX as supported software frameworks. Neurophos raised a $110M Series A in January 2026
+  led by Gates Frontier with M12, Carbon Direct, Aramco Ventures and Bosch Ventures. It
+  sells hardware, not software services: there is no developer program, no public API and
+  no SDK. The only machine-readable surfaces at its domain are an llms.txt and the
+  Wix-platform site MCP endpoint that llms.txt advertises.
+image: https://static.wixstatic.com/media/79aa3c_0cf41cb45de44d92ab97f571e6d733ff~mv2.jpg/v1/fill/w_1942,h_931,al_c/79aa3c_0cf41cb45de44d92ab97f571e6d733ff~mv2.jpg
 url: https://raw.githubusercontent.com/api-evangelist/neurophos/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
-specificationVersion: '0.20'
+x-tier: profiled
+x-tier-reason: enrichment-pipeline
+specificationVersion: '0.21'
 created: '2026-08-04'
 modified: '2026-08-04'
 tags:
 - Company
-apis: []
+- photonics
+- optical-computing
+- ai-inference
+- ai-accelerators
+- semiconductors
+- metamaterials
+- data-center
+- deep-tech
+- mcp
+apis:
+- name: Neurophos Site MCP
+  description: >-
+    A live, unauthenticated Model Context Protocol endpoint served from the neurophos.com
+    host and advertised in the company's own llms.txt. It is provided by the Wix site
+    platform rather than authored by Neurophos, and exposes nine tools over the public
+    marketing site — business details, site search, site API-doc search, anonymous
+    visitor-token minting, and generic Wix REST call/execute tools. No tool exposes the
+    T100 OPU, its runtime, or any Neurophos compute service; this is a site-content agent
+    surface, not a product API.
+  humanURL: https://www.neurophos.com/llms.txt
+  baseURL: https://www.neurophos.com/_api/mcp
+  tags:
+  - mcp
+  - agent-access
+  - site-content
+  properties:
+  - type: MCPServer
+    url: mcp/neurophos-mcp.yml
+  - type: LLMsTxt
+    url: llms/neurophos-llms.txt
+  - type: Authentication
+    url: authentication/neurophos-authentication.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -20,4 +63,46 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
+  url: https://www.neurophos.com/
+- type: MCPServer
+  url: mcp/neurophos-mcp.yml
+- type: LLMsTxt
+  url: llms/neurophos-llms.txt
+- type: WellKnown
+  url: well-known/neurophos-well-known.yml
+- type: Authentication
+  url: authentication/neurophos-authentication.yml
+- type: DomainSecurity
+  url: security/neurophos-domain-security.yml
+- type: Conformance
+  url: conformance/neurophos-conformance.yml
+- type: GitHubOrganization
+  url: https://github.com/Neurophos
+- type: News
+  url: https://www.neurophos.com/resources/news
+- type: Careers
+  url: https://www.neurophos.com/careers
+- type: Contact
+  url: https://www.neurophos.com/contact
+- type: SecondaryMarket
   url: https://forgeglobal.com/neurophos_stock/
+x-enrichment:
+  date: '2026-08-04'
+  status: enriched
+  artifacts_added: 7
+  pass: local-v1
+x-coverage:
+  state: covered
+  detail: >-
+    Neurophos is a photonic-silicon company with no developer program — no OpenAPI,
+    no SDK, no docs/api/developer subdomain resolves. What it does serve from its own
+    host, and what was captured verbatim here, is an llms.txt and the live
+    unauthenticated Wix site MCP endpoint (9 tools) that llms.txt advertises.
+  evidence:
+  - url: https://www.neurophos.com/llms.txt
+    status: 200
+  - url: https://www.neurophos.com/_api/mcp
+    status: 200
+  - url: https://api.neurophos.com/
+    status: 0
+  checked: '2026-08-04'

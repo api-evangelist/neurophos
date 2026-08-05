@@ -1,0 +1,46 @@
+generated: '2026-08-04'
+method: derived
+source: mcp/neurophos-mcp-tools-list.json, llms/neurophos-llms.txt, well-known/neurophos-well-known.yml
+note: >-
+  Derived from what was actually probed at neurophos.com on 2026-08-04. Neurophos
+  publishes no OpenAPI, AsyncAPI, GraphQL SDL or compliance program, so most
+  cross-cutting standards are recorded as non-conforming for absence of a surface, not
+  as a failure. No Compliance pointer is emitted — the company publishes no
+  certifications.
+standards:
+- id: mcp
+  name: Model Context Protocol
+  conforms: true
+  evidence: >-
+    POST https://www.neurophos.com/_api/mcp with a JSON-RPC 2.0 tools/list returned
+    HTTP 200 and 9 tools, each carrying an inputSchema.
+- id: jsonrpc-2.0
+  conforms: true
+  evidence: MCP endpoint speaks JSON-RPC 2.0 over HTTP.
+- id: llms-txt
+  conforms: true
+  evidence: https://www.neurophos.com/llms.txt returns 200 text/plain with H1, blockquote
+    summary and link sections.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returned 400 (HTML).
+- id: rfc8615-well-known
+  conforms: false
+  evidence: every /.well-known/* path returned 400 with an HTML body.
+- id: a2a-agent-card
+  conforms: false
+  evidence: /.well-known/agent-card.json and /.well-known/agent.json both returned 400
+    (HTML).
+- id: openapi
+  conforms: false
+  evidence: no OpenAPI on the site host, no resolving api./docs./developer. subdomains.
+- id: oauth2
+  conforms: false
+  evidence: no oauth-authorization-server metadata; MCP visitor tokens are minted
+    anonymously via GenerateVisitorToken.
+- id: oidc
+  conforms: false
+  evidence: /.well-known/openid-configuration returned 400.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: no spec or error reference published.

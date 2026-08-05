@@ -1,0 +1,62 @@
+generated: '2026-08-04'
+method: probed
+host: https://www.neurophos.com
+note: >-
+  Neurophos runs a Wix-hosted marketing site. Every /.well-known/* path returns HTTP 400
+  with an HTML body (the Wix router's response for unrouted paths) — there is no
+  discovery surface, no security.txt, no OIDC/OAuth metadata and no api-catalog.
+  Recorded as an honest zero, not a failure to probe.
+documents:
+- path: /.well-known/security.txt
+  status: 400
+  content_type: text/html
+- path: /.well-known/openid-configuration
+  status: 400
+  content_type: text/html
+- path: /.well-known/oauth-authorization-server
+  status: 400
+  content_type: text/html
+- path: /.well-known/oauth-protected-resource
+  status: 400
+  content_type: text/html
+- path: /.well-known/api-catalog
+  status: 400
+  content_type: text/html
+- path: /.well-known/ai-plugin.json
+  status: 400
+  content_type: text/html
+- path: /.well-known/agent-card.json
+  status: 400
+  content_type: text/html
+- path: /.well-known/agent.json
+  status: 400
+  content_type: text/html
+- path: /_api/mcp/.well-known/oauth-authorization-server
+  status: 404
+  content_type: application/json
+- path: /_api/mcp/.well-known/oauth-protected-resource
+  status: 404
+  content_type: application/json
+found:
+- path: /llms.txt
+  status: 200
+  content_type: text/plain
+  file: ../llms/neurophos-llms.txt
+- path: /robots.txt
+  status: 200
+  content_type: text/plain
+- path: /sitemap.xml
+  status: 200
+  content_type: text/xml
+x-evidence:
+  fetched: '2026-08-04'
+  hosts_probed:
+  - www.neurophos.com
+  - neurophos.com
+  subdomains_unresolved:
+  - api.neurophos.com
+  - docs.neurophos.com
+  - developer.neurophos.com
+  - developers.neurophos.com
+  - status.neurophos.com
+  - trust.neurophos.com
