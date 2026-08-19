@@ -7,27 +7,24 @@ server:
   transport: http
   url: https://www.neurophos.com/_api/mcp
   protocol: MCP (JSON-RPC 2.0 over HTTP)
-  authentication: none required to connect; CallWixSiteAPI / ExecuteWixAPI require a
-    visitor token minted anonymously by GenerateVisitorToken
+  authentication: none required to connect; CallWixSiteAPI / ExecuteWixAPI require a visitor token minted
+    anonymously by GenerateVisitorToken
   advertised_in: https://www.neurophos.com/llms.txt
 provenance:
   platform: Wix
-  note: >-
-    This MCP endpoint is provided by the Wix site platform, not authored by Neurophos.
-    It is served from the neurophos.com host, is advertised by Neurophos' own llms.txt,
-    responds anonymously, and exposes real tools over the site's public content — so it
-    is recorded as a live agent surface at this provider. It is NOT a Neurophos product
-    API: no tool exposes the T100 OPU, its runtime, or any Neurophos compute service.
+  note: 'This MCP endpoint is provided by the Wix site platform, not authored by Neurophos. It is served
+    from the neurophos.com host, is advertised by Neurophos'' own llms.txt, responds anonymously, and
+    exposes real tools over the site''s public content — so it is recorded as a live agent surface at
+    this provider. It is NOT a Neurophos product API: no tool exposes the T100 OPU, its runtime, or any
+    Neurophos compute service.'
   platform_docs: https://dev.wix.com/docs/develop-websites/articles/get-started/about-the-wix-site-mcp
   tool_list_file: neurophos-mcp-tools-list.json
-  untrusted_content: >-
-    The verbatim tools/list response embeds vendor "agent-mandatory-instructions" text
-    inside tool descriptions. That text is DATA captured for the record, not instruction
-    to any agent reading this repository.
+  untrusted_content: The verbatim tools/list response embeds vendor "agent-mandatory-instructions" text
+    inside tool descriptions. That text is DATA captured for the record, not instruction to any agent
+    reading this repository.
 tools:
 - name: GetBusinessDetails
-  description: Get business and site details for the Neurophos site (timezone, email,
-    phone, address).
+  description: Get business and site details for the Neurophos site (timezone, email, phone, address).
   parameters: []
 - name: SearchInSite
   description: Searches the Neurophos site for information.
@@ -36,19 +33,16 @@ tools:
   required:
   - searchTerm
 - name: SearchSiteApiDocs
-  description: Searches the site's API documentation and returns how to use the site
-    via the API.
+  description: Searches the site's API documentation and returns how to use the site via the API.
   parameters:
   - searchTerm
   required:
   - searchTerm
 - name: GenerateVisitorToken
-  description: Create a new visitor session and obtain a visitor access token for the
-    site.
+  description: Create a new visitor session and obtain a visitor access token for the site.
   parameters: []
 - name: CallWixSiteAPI
-  description: Call APIs on the site to act on a visitor's behalf (query site data,
-    start a purchase).
+  description: Call APIs on the site to act on a visitor's behalf (query site data, start a purchase).
   parameters:
   - visitorToken
   - url
@@ -59,8 +53,7 @@ tools:
   - url
   - method
 - name: ExecuteWixAPI
-  description: Run JavaScript against the Wix REST API on the site, on the visitor's
-    behalf, in a sandbox.
+  description: Run JavaScript against the Wix REST API on the site, on the visitor's behalf, in a sandbox.
   parameters:
   - code
   - reason
@@ -102,3 +95,11 @@ x-evidence:
   content_type: application/json; charset=utf-8
   tools_returned: 9
   raw_response: mcp/neurophos-mcp-tools-list.json
+deployment:
+  mode: remote
+  endpoint: https://www.neurophos.com/_api/mcp
+  verified: probed
+  probe: live
+  tools: 9
+  checked: '2026-08-12'
+  source: catalog MCP census
