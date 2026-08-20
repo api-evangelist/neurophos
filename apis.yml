@@ -24,6 +24,17 @@ created: '2026-08-04'
 modified: '2026-08-04'
 tags:
 - Company
+- Photonics
+- optical-computing
+- AI Inference
+- AI Accelerators
+- Semiconductors
+- metamaterials
+- Data-Center
+- Deep Tech
+- MCP
+tags_raw:
+- Company
 - photonics
 - optical-computing
 - ai-inference
@@ -46,6 +57,10 @@ apis:
   humanURL: https://www.neurophos.com/llms.txt
   baseURL: https://www.neurophos.com/_api/mcp
   tags:
+  - MCP
+  - agent-access
+  - Site Content
+  tags_raw:
   - mcp
   - agent-access
   - site-content
