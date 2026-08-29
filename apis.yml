@@ -26,6 +26,9 @@ deliveryModel:
   method: derived
 image: https://static.wixstatic.com/media/79aa3c_0cf41cb45de44d92ab97f571e6d733ff~mv2.jpg/v1/fill/w_1942,h_931,al_c/79aa3c_0cf41cb45de44d92ab97f571e6d733ff~mv2.jpg
 url: https://raw.githubusercontent.com/api-evangelist/neurophos/refs/heads/main/apis.yml
+x-api-posture: no-product-api
+x-api-posture-basis: observed
+x-api-posture-note: "It sells hardware, not software services: there is no developer program, no public API and no SDK."
 x-type: company
 x-source: harvest:secondary-market
 x-tier: profiled
