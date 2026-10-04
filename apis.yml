@@ -54,11 +54,11 @@ tags:
 - Company
 - Photonics
 - Optical Computing
-- AI Inference
+- Inference
 - AI Accelerators
 - Semiconductors
 - Metamaterials
-- Data-Center
+- Data Center
 - Deep Tech
 - MCP
 tags_raw:
@@ -72,6 +72,8 @@ tags_raw:
 - data-center
 - deep-tech
 - mcp
+- Data-Center
+- AI Inference
 apis:
 - name: Neurophos Site MCP
   description: >-
@@ -99,6 +101,9 @@ apis:
     url: llms/neurophos-llms.txt
   - type: Authentication
     url: authentication/neurophos-authentication.yml
+  x-surface: platform-generated
+  x-platform: wix
+  x-platform-surface: site-mcp
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
