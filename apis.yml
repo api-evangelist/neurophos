@@ -49,7 +49,7 @@ x-tier: profiled
 x-tier-reason: enrichment-pipeline
 specificationVersion: '0.23'
 created: '2026-08-04'
-modified: '2026-08-04'
+modified: '2026-10-06'
 tags:
 - Company
 - Photonics
@@ -110,6 +110,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- url: https://www.neurophos.com/news
+  type: Blog
 - type: Website
   url: https://www.neurophos.com/
 - type: MCPServer
